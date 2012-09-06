@@ -7,6 +7,7 @@ ShellSession.prototype.echoText = function(event) {
 
     // Get the key code
     var keycode = event.which;
+    console.log(keycode);
 
     // Capture characters
     switch(keycode) {
@@ -16,6 +17,9 @@ ShellSession.prototype.echoText = function(event) {
             consoletext = consoletext.slice(0, (consoletext.length - 1));
             $('#prompt').text(consoletext);
             break;
+        case 13:
+            // Enter pressed - move to next line
+            $('#prompt').after('<br /><span>shellshocked$ </span>');
         default:
             // Get the character from the key code
             var keypressed = String.fromCharCode(keycode);
