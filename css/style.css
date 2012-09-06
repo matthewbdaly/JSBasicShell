@@ -3,8 +3,12 @@ body {
     font-size: 12px;
     background-color: #000000;
     color: green;
+}
+
+#content {
+    width: 80%;
     line-height: 150%;
-    padding: 20px;
+    margin: 20px auto;
 }
 
 #prompt {
