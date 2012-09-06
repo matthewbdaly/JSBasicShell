@@ -7,7 +7,6 @@ ShellSession.prototype.echoText = function(event) {
 
     // Get the key code
     var keycode = event.which;
-    console.log(keycode);
 
     // Capture characters
     switch(keycode) {
