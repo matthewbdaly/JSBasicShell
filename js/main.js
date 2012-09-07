@@ -11,6 +11,9 @@ function ShellSession() {
     $('<span></span>', {
         'class': 'buffer'
     }).insertAfter('.prompt');
+
+    // Create the history stack
+    this.history = [];
 }
 
 ShellSession.prototype.echoText = function (event) {
@@ -27,14 +30,17 @@ ShellSession.prototype.echoText = function (event) {
 
     // Capture characters
     switch (keycode) {
-    case 8:
-        // Delete pressed - delete the last character
+    case 8: // Delete pressed - delete the last character
         consoletext = $('.buffer').last().text();
         consoletext = consoletext.slice(0, (consoletext.length - 1));
         $('.buffer:last-of-type').text(consoletext);
         break;
-    case 13:
-        // Enter pressed - move to next line
+    case 13: // Enter pressed - move to next line
+        // Get current buffer contents
+        consoletext = $('.buffer:last-of-type').text();
+
+        // Push the buffer contents to the history stack
+        this.history.push(consoletext);
 
         // Place a break after the current buffer
         bufferbreak = $('<br />', {
