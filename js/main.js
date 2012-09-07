@@ -63,7 +63,7 @@ ShellSession.prototype.echoText = function (event) {
     case 38: // Move up through the history
         // Get the index for the history entry
         if (this.pointer === null) {
-            this.pointer = this.history.length - 2;
+            this.pointer = this.history.length - 1;
         } else if (this.pointer > 0) {
             this.pointer = this.pointer - 1;
         }
