@@ -60,12 +60,12 @@ ShellSession.prototype.echoText = function (event) {
             'class': 'buffer'
         }).insertAfter(newprompt);
         break;
-    case 38: // Move up through the history
+    case 38: // Move back through the history
         // Get the index for the history entry
         if (this.pointer === null) {
             this.pointer = this.history.length - 1;
         } else if (this.pointer > 0) {
-            this.pointer = this.pointer - 1;
+            this.pointer -= 1;
         }
 
         // Get this entry from the history
@@ -73,7 +73,7 @@ ShellSession.prototype.echoText = function (event) {
         $(currentbuffer).text(this.history[this.pointer]);
 
         break;
-    case 40: // Move down through the history
+    case 40: // Move forward through the history
         if (this.pointer >= 0 && this.pointer < this.history.length) {
             this.pointer += 1;
         }
