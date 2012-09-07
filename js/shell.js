@@ -62,6 +62,9 @@ ShellSession.prototype.echoText = function (event) {
         $('<span></span>', {
             'class': 'buffer'
         }).insertAfter(newprompt);
+
+        // Scroll user down
+        $('html, body').animate({scrollTop: $(document).height() }, 'fast');
         break;
     case 38: // Move back through the history
         // Get the index for the history entry
