@@ -20,7 +20,7 @@ ShellSession.prototype.echoText = function (event) {
     event.preventDefault();
 
     // Define the variables used
-    var newprompt, bufferbreak, lastbuffer, consoletext, keypressed, currenttext, keycode;
+    var newprompt, bufferbreak, currentbuffer, consoletext, keypressed, currenttext, keycode;
 
     // Get the key code
     keycode = event.which;
@@ -35,13 +35,18 @@ ShellSession.prototype.echoText = function (event) {
         break;
     case 13:
         // Enter pressed - move to next line
+
+        // Place a break after the current buffer
         bufferbreak = $('<br />', {
-        }).appendTo('.buffer:last-of-type');
-        lastbuffer = $('.buffer').last().after('<br />');
+        }).insertAfter('.buffer:last-of-type');
+
+        // Place a new prompt after the break
         newprompt = $('<span></span>', {
             'class': 'prompt',
             text: 'shellshocked $'
-        }).insertAfter(lastbuffer);
+        }).insertAfter(bufferbreak);
+
+        // Place a new buffer after the prompt
         $('<span></span>', {
             'class': 'buffer'
         }).insertAfter(newprompt);
@@ -49,8 +54,9 @@ ShellSession.prototype.echoText = function (event) {
     default:
         // Get the character from the key code
         keypressed = String.fromCharCode(keycode);
-        currenttext = $('.buffer:last-of-type').text();
-        $('.buffer:last-of-type').text(currenttext + keypressed);
+        currentbuffer = $('.buffer').last();
+        currenttext = currentbuffer.text();
+        $(currentbuffer).text(currenttext + keypressed);
     }
 };
 
