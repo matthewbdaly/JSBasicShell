@@ -4,7 +4,7 @@ function ShellSession() {
     // Create the prompt
     $('<span></span>', {
         'class': 'prompt',
-        text: 'shellshocked $'
+        text: 'shellshocked $ '
     }).appendTo('#content');
 
     // Create the text area
@@ -49,7 +49,7 @@ ShellSession.prototype.echoText = function (event) {
         // Place a new prompt after the break
         newprompt = $('<span></span>', {
             'class': 'prompt',
-            text: 'shellshocked $'
+            text: 'shellshocked $ '
         }).insertAfter(bufferbreak);
 
         // Place a new buffer after the prompt
@@ -74,9 +74,9 @@ ShellSession.prototype.echoText = function (event) {
 $(document).ready(function () {
     'use strict';
 
-    // Disable the default behaviour for the backspace key
+    // Disable the default behaviour for the backspace, tab, up arrow and down arrow keys
     $(document).keydown(function (e) {
-        if (e.keyCode === 8) {
+        if (e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 38 || e.keyCode === 40) {
             return false;
         }
     });
