@@ -13,6 +13,6 @@ $(document).ready(function () {
 
     // Pass any keypresses to the shell
     $(document).keyup(function (event) {
-        shell.echoText(event);
+        shell.capture(event);
     });
 });
