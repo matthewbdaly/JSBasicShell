@@ -74,6 +74,14 @@ ShellSession.prototype.echoText = function (event) {
 
         break;
     case 40: // Move down through the history
+        if (this.pointer >= 0 && this.pointer < this.history.length) {
+            this.pointer += 1;
+        }
+
+        // Get this entry from the history
+        currentbuffer = $('.buffer').last();
+        $(currentbuffer).text(this.history[this.pointer]);
+
         break;
     default:
         // Get the character from the key code
