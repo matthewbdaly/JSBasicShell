@@ -39,6 +39,9 @@ ShellSession.prototype.echoText = function (event) {
         $('.buffer:last-of-type').text(consoletext);
         break;
     case 13: // Enter pressed - move to next line
+        // Reset the pointer
+        this.pointer = null;
+
         // Get current buffer contents
         consoletext = $('.buffer:last-of-type').text();
 
