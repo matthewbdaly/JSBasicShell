@@ -1,5 +1,16 @@
 function ShellSession() {
     'use strict';
+
+    // Create the prompt
+    $('<span></span>', {
+        'class': 'prompt',
+        text: 'shellshocked $'
+    }).appendTo('#content');
+
+    // Create the text area
+    $('<span></span>', {
+        'class': 'buffer'
+    }).insertAfter('.prompt');
 }
 
 ShellSession.prototype.echoText = function (event) {
@@ -9,7 +20,7 @@ ShellSession.prototype.echoText = function (event) {
     event.preventDefault();
 
     // Define the variables used
-    var consoletext, keypressed, currenttext, keycode;
+    var newprompt, bufferbreak, lastbuffer, consoletext, keypressed, currenttext, keycode;
 
     // Get the key code
     keycode = event.which;
@@ -18,19 +29,28 @@ ShellSession.prototype.echoText = function (event) {
     switch (keycode) {
     case 8:
         // Delete pressed - delete the last character
-        consoletext = $('#prompt').text();
+        consoletext = $('.buffer').last().text();
         consoletext = consoletext.slice(0, (consoletext.length - 1));
-        $('#prompt').text(consoletext);
+        $('.buffer:last-of-type').text(consoletext);
         break;
     case 13:
         // Enter pressed - move to next line
-        $('#prompt').after('<br /><span>shellshocked$ </span>');
+        bufferbreak = $('<br />', {
+        }).appendTo('.buffer:last-of-type');
+        lastbuffer = $('.buffer').last().after('<br />');
+        newprompt = $('<span></span>', {
+            'class': 'prompt',
+            text: 'shellshocked $'
+        }).insertAfter(lastbuffer);
+        $('<span></span>', {
+            'class': 'buffer'
+        }).insertAfter(newprompt);
         break;
     default:
         // Get the character from the key code
         keypressed = String.fromCharCode(keycode);
-        currenttext = $('#prompt').text();
-        $('#prompt').text(currenttext + keypressed);
+        currenttext = $('.buffer:last-of-type').text();
+        $('.buffer:last-of-type').text(currenttext + keypressed);
     }
 };
 
