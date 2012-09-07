@@ -60,6 +60,11 @@ ShellSession.prototype.echoText = function (event) {
     default:
         // Get the character from the key code
         keypressed = String.fromCharCode(keycode);
+
+        // Convert it to lower case
+        keypressed = keypressed.toLowerCase();
+
+        // Write it to the buffer
         currentbuffer = $('.buffer').last();
         currenttext = currentbuffer.text();
         $(currentbuffer).text(currenttext + keypressed);
