@@ -68,6 +68,14 @@ ShellSession.prototype.echoText = function (event) {
 
 $(document).ready(function () {
     'use strict';
+
+    // Disable the default behaviour for the backspace key
+    $(document).keydown(function (e) {
+        if (e.keyCode === 8) {
+            return false;
+        }
+    });
+
     // Create a shell session object
     var shell = new ShellSession();
     $(document).keyup(function (event) {
