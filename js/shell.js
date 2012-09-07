@@ -1,22 +1,25 @@
 function ShellSession() {
     'use strict';
 
-    // Create the prompt
-    $('<span></span>', {
-        'class': 'prompt',
-        text: 'shellshocked $ '
-    }).appendTo('#content');
-
-    // Create the text area
-    $('<span></span>', {
-        'class': 'buffer'
-    }).insertAfter('.prompt');
+    // Define the prompt
+    this.prompt = 'shellshocked user $ ';
 
     // Create the history stack
     this.history = [];
 
     // Create a pointer for the history
     this.pointer = null;
+
+    // Create the prompt
+    $('<span></span>', {
+        'class': 'prompt',
+        text: this.prompt
+    }).appendTo('#content');
+
+    // Create the text area
+    $('<span></span>', {
+        'class': 'buffer'
+    }).insertAfter('.prompt');
 }
 
 ShellSession.prototype.echoText = function (event) {
@@ -55,7 +58,7 @@ ShellSession.prototype.echoText = function (event) {
         // Place a new prompt after the break
         newprompt = $('<span></span>', {
             'class': 'prompt',
-            text: 'shellshocked $ '
+            text: this.prompt
         }).insertAfter(bufferbreak);
 
         // Place a new buffer after the prompt
