@@ -14,6 +14,9 @@ function ShellSession() {
 
     // Create the history stack
     this.history = [];
+
+    // Create a pointer for the history
+    this.pointer = null;
 }
 
 ShellSession.prototype.echoText = function (event) {
@@ -56,6 +59,21 @@ ShellSession.prototype.echoText = function (event) {
         $('<span></span>', {
             'class': 'buffer'
         }).insertAfter(newprompt);
+        break;
+    case 38: // Move up through the history
+        // Get the index for the history entry
+        if (this.pointer === null) {
+            this.pointer = this.history.length - 2;
+        } else if (this.pointer > 0) {
+            this.pointer = this.pointer - 1;
+        }
+
+        // Get this entry from the history
+        currentbuffer = $('.buffer').last();
+        $(currentbuffer).text(this.history[this.pointer]);
+
+        break;
+    case 40: // Move down through the history
         break;
     default:
         // Get the character from the key code
