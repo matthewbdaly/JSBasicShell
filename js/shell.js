@@ -29,7 +29,7 @@ ShellSession.prototype.enter = function () {
     this.pointer = null;
 
     // Declare variables
-    var consoletext, bufferbreak, newprompt;
+    var consoletext, bufferbreak, newprompt, lexer, output, outputtext, topbreak;
 
     // Get current buffer contents
     consoletext = $('.buffer:last-of-type').text();
@@ -37,14 +37,30 @@ ShellSession.prototype.enter = function () {
     // Push the buffer contents to the history stack
     this.history.push(consoletext);
 
-    // Place a break after the current buffer
-    bufferbreak = $('<br />', {
-    }).insertAfter('.buffer:last-of-type');
+    // Pass the buffer contents to the lexer
+    lexer = new Lexer();
+    output = lexer.getTokens(consoletext);
+
+    // If any output, insert it before the new prompt
+    if (output) {
+        // Display any output
+        topbreak = $('<br />', {
+        }).insertAfter('.buffer:last-of-type');
+        outputtext = $('<span></span>', {
+            text: output
+        }).insertAfter(topbreak);
+        bufferbreak = $('<br />', {
+        }).insertAfter(outputtext);
+    } else {
+        // Just place a break after the current buffer
+        bufferbreak = $('<br />', {
+        }).insertAfter('.buffer:last-of-type');
+    }
 
     // Place a new prompt after the break
     newprompt = $('<span></span>', {
         'class': 'prompt',
-        text: this.prompt
+              text: this.prompt
     }).insertAfter(bufferbreak);
 
     // Place a new buffer after the prompt
@@ -104,7 +120,7 @@ ShellSession.prototype.forwardHistory = function (event) {
 
 ShellSession.prototype.echoText = function (keycode) {
     'use strict';
-    
+
     // Define the variables used
     var keypressed, currentbuffer, currenttext;
 
