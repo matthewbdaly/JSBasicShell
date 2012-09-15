@@ -1,8 +1,11 @@
 function ShellSession() {
     'use strict';
 
+    // Define the loading message
+    this.loadmessage = "JS Basic 1.0";
+
     // Define the prompt
-    this.prompt = 'shellshocked user $ ';
+    this.prompt = '> ';
 
     // Create the history stack
     this.history = [];
@@ -10,11 +13,17 @@ function ShellSession() {
     // Create a pointer for the history
     this.pointer = null;
 
+    // Display the load message
+    $('<p></p>', {
+        text: this.loadmessage,
+        'class': 'loadmessage'
+    }).appendTo('#content');
+
     // Create the prompt
     $('<span></span>', {
         'class': 'prompt',
         text: this.prompt
-    }).appendTo('#content');
+    }).insertAfter('.loadmessage');
 
     // Create the text area
     $('<span></span>', {
