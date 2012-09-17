@@ -16,6 +16,8 @@ function Lexer() {
     this.tokens.divide = new RegExp(/^\*/);
     this.tokens.modulo = new RegExp(/^\%/);
     this.tokens.equal = new RegExp(/^\=/);
+    this.tokens.leftbracket = new RegExp(/^\(/);
+    this.tokens.rightbracket = new RegExp(/^\)/);
 
     // Define tokens for other characters
     this.tokens.dollar = new RegExp(/^\$/);
