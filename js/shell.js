@@ -69,7 +69,7 @@ ShellSession.prototype.enter = function () {
     // Place a new prompt after the break
     newprompt = $('<span></span>', {
         'class': 'prompt',
-              text: this.prompt
+        text: this.prompt
     }).insertAfter(bufferbreak);
 
     // Place a new buffer after the prompt
@@ -79,9 +79,9 @@ ShellSession.prototype.enter = function () {
 
     // Scroll user down
     $('html, body').animate({scrollTop: $(document).height() }, 'fast');
-}
+};
 
-ShellSession.prototype.delete = function () {
+ShellSession.prototype.backspace = function () {
     'use strict';
 
     // Define the variables used
@@ -91,7 +91,7 @@ ShellSession.prototype.delete = function () {
     consoletext = $('.buffer').last().text();
     consoletext = consoletext.slice(0, (consoletext.length - 1));
     $('.buffer:last-of-type').text(consoletext);
-}
+};
 
 ShellSession.prototype.backHistory = function (event) {
     'use strict';
@@ -109,7 +109,7 @@ ShellSession.prototype.backHistory = function (event) {
     // Get this entry from the history
     currentbuffer = $('.buffer').last();
     $(currentbuffer).text(this.history[this.pointer]);
-}
+};
 
 ShellSession.prototype.forwardHistory = function (event) {
     'use strict';
@@ -125,7 +125,7 @@ ShellSession.prototype.forwardHistory = function (event) {
     // Get this entry from the history
     currentbuffer = $('.buffer').last();
     $(currentbuffer).text(this.history[this.pointer]);
-}
+};
 
 ShellSession.prototype.echoText = function (keycode) {
     'use strict';
@@ -160,7 +160,7 @@ ShellSession.prototype.capture = function (event) {
     // Capture characters
     switch (keycode) {
         case 8: // Delete pressed - delete the last character
-            this.delete();
+            this.backspace();
             break;
         case 13: // Enter pressed - move to next line
             this.enter();
