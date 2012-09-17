@@ -23,6 +23,8 @@ function Lexer() {
     this.tokens.dollar = new RegExp(/^\$/);
     this.tokens.semicolon = new RegExp(/^\;/);
     this.tokens.comma = new RegExp(/^\,/);
+    this.tokens.singlequotes = new RegExp(/^\'/);
+    this.tokens.doublequotes = new RegExp(/^\"/);
 }
 
 Lexer.prototype.identifyTokens = function (input) {
