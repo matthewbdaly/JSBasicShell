@@ -60,7 +60,7 @@ Lexer.prototype.getTokens = function (input) {
     'use strict';
 
     // Define the variables
-    var output, tokens = [], newtoken, result;
+    var output, tokens = [], newtoken, result, parser;
 
     // Parse the tokens
     while (input.length > 0) {
@@ -71,4 +71,9 @@ Lexer.prototype.getTokens = function (input) {
             tokens.push(newtoken);
         }
     }
+
+    // Send it to the parser
+    parser = new Parser();
+    output = parser.processTokens(tokens);
+    return output;
 };
