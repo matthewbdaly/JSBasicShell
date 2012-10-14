@@ -45,6 +45,5 @@ Parser.prototype.processTokens = function (input) {
 
         // Store it
         localStorage.setItem('program', JSON.stringify(this.program));
-        console.log(JSON.parse(localStorage.getItem('program')));
     }
 };
