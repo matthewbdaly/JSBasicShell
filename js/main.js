@@ -12,7 +12,7 @@ $(document).ready(function () {
     var shell = new ShellSession();
 
     // Pass any keypresses to the shell
-    $(document).keyup(function (event) {
+    $(document).keypress(function (event) {
         shell.capture(event);
     });
 });
