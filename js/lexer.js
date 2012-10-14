@@ -91,7 +91,6 @@ Lexer.prototype.getTokens = function (input) {
 
     // Send it to the parser
     parser = new Parser();
-    console.log(tokens);
     output = parser.processTokens(tokens);
     return output;
 };
