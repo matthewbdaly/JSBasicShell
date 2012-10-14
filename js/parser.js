@@ -21,6 +21,6 @@ Parser.prototype.processTokens = function (input) {
     // If first token is a number, this is a program being entered
     if (tokens[0].tokentype === "number") {
         programline = tokens.slice(1);
-        program[tokenvalue] = programline;
+        program[tokens[0].tokenvalue] = programline;
     }
 };
