@@ -25,6 +25,14 @@ function Lexer() {
     this.tokens.comma = new RegExp(/^\,/);
     this.tokens.singlequotes = new RegExp(/^\'/);
     this.tokens.doublequotes = new RegExp(/^\"/);
+    this.tokens.hash = new RegExp(/^\#/);
+    this.tokens.bang = new RegExp(/^\!/);
+    this.tokens.amp = new RegExp(/^\&/);
+    this.tokens.pipe = new RegExp(/^\|/);
+    this.tokens.tilde = new RegExp(/^\~/);
+    this.tokens.forwardslash = new RegExp(/^\//);
+    this.tokens.dot = new RegExp(/^\./);
+    this.tokens.colon = new RegExp(/^\:/);
 }
 
 Lexer.prototype.identifyTokens = function (input) {
