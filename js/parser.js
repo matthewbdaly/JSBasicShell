@@ -6,7 +6,7 @@ Parser.prototype.processTokens = function (input) {
     'use strict';
 
     // Define variables
-    var item, output, token, tokens = [], program = [], programline;
+    var item, output, token, tokens = [], program = [], linenum, programline;
 
     // Get the tokens
     for (item in input) {
@@ -20,7 +20,20 @@ Parser.prototype.processTokens = function (input) {
 
     // If first token is a number, this is a program being entered
     if (tokens[0].tokentype === "number") {
+        linenum = tokens[0].tokenvalue;
         programline = tokens.slice(1);
-        program[tokens[0].tokenvalue] = programline;
+
+        // Get any existing program from local storage
+        this.program = JSON.parse(localStorage.getItem('program'));
+        if (!this.program) {
+            this.program = {};
+            this.program.line = [];
+        }
+
+        // Add this line to it
+        this.program.line[linenum] = programline;
+
+        // Store it
+        localStorage.setItem('program', JSON.stringify(this.program));
     }
 };
