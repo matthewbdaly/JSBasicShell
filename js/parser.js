@@ -24,12 +24,12 @@ Parser.prototype.processTokens = function (input) {
         programline = tokens.slice(1);
 
         // Is the first element whitespace? If so, drop it
-        if (programline[0].tokentype == "whitespace") {
+        if (programline[0].tokentype === "whitespace") {
             programline.shift();
         }
 
         // Same for the last element
-        if (programline[(programline.length - 1)].tokentype == "whitespace") {
+        if (programline[(programline.length - 1)].tokentype === "whitespace") {
             programline.pop();
         }
 
