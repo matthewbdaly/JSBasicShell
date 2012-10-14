@@ -143,7 +143,7 @@ ShellSession.prototype.echoText = function (keycode) {
     currentbuffer = $('.buffer').last();
     currenttext = currentbuffer.text();
     $(currentbuffer).text(currenttext + keypressed);
-}
+};
 
 ShellSession.prototype.capture = function (event) {
     'use strict';
@@ -159,19 +159,19 @@ ShellSession.prototype.capture = function (event) {
 
     // Capture characters
     switch (keycode) {
-        case 8: // Delete pressed - delete the last character
-            this.backspace();
-            break;
-        case 13: // Enter pressed - move to next line
-            this.enter();
-            break;
-        case 38: // Move back through the history
-            this.backHistory();
-            break;
-        case 40: // Move forward through the history
-            this.forwardHistory();
-            break;
-        default:
-            this.echoText(keycode);
+    case 8: // Delete pressed - delete the last character
+        this.backspace();
+        break;
+    case 13: // Enter pressed - move to next line
+        this.enter();
+        break;
+    case 38: // Move back through the history
+        this.backHistory();
+        break;
+    case 40: // Move forward through the history
+        this.forwardHistory();
+        break;
+    default:
+        this.echoText(keycode);
     }
 };
