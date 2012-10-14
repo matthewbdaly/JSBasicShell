@@ -13,6 +13,9 @@ $(document).ready(function () {
 
     // Pass any keypresses to the shell
     $(document).keypress(function (event) {
-        shell.capture(event);
+        shell.captureChar(event);
+    });
+    $(document).keyup(function (event) {
+        shell.captureKey(event);
     });
 });

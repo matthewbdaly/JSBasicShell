@@ -22,6 +22,5 @@ Parser.prototype.processTokens = function (input) {
     if (tokens[0].tokentype === "number") {
         programline = tokens.slice(1);
         program[tokenvalue] = programline;
-        console.log(program);
     }
 };

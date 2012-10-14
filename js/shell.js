@@ -136,16 +136,13 @@ ShellSession.prototype.echoText = function (keycode) {
     // Get the character from the key code
     keypressed = String.fromCharCode(keycode);
 
-    // Convert it to lower case
-    keypressed = keypressed.toLowerCase();
-
     // Write it to the buffer
     currentbuffer = $('.buffer').last();
     currenttext = currentbuffer.text();
     $(currentbuffer).text(currenttext + keypressed);
 };
 
-ShellSession.prototype.capture = function (event) {
+ShellSession.prototype.captureKey = function (event) {
     'use strict';
 
     // Prevent the default action
@@ -172,6 +169,21 @@ ShellSession.prototype.capture = function (event) {
         this.forwardHistory();
         break;
     default:
-        this.echoText(keycode);
     }
 };
+
+ShellSession.prototype.captureChar = function (event) {
+    'use strict';
+
+    // Prevent the default action
+    event.preventDefault();
+
+    // Define the variables use
+    var keypressed, keycode, s;
+
+    // Get the key code
+    keycode = event.which;
+
+    // Display the character
+    this.echoText(keycode);
+}
