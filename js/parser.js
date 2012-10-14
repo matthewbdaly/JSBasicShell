@@ -23,6 +23,16 @@ Parser.prototype.processTokens = function (input) {
         linenum = tokens[0].tokenvalue;
         programline = tokens.slice(1);
 
+        // Is the first element whitespace? If so, drop it
+        if (programline[0].tokentype == "whitespace") {
+            programline.shift();
+        }
+
+        // Same for the last element
+        if (programline[(programline.length - 1)].tokentype == "whitespace") {
+            programline.pop();
+        }
+
         // Get any existing program from local storage
         this.program = JSON.parse(localStorage.getItem('program'));
         if (!this.program) {
@@ -35,5 +45,6 @@ Parser.prototype.processTokens = function (input) {
 
         // Store it
         localStorage.setItem('program', JSON.stringify(this.program));
+        console.log(JSON.parse(localStorage.getItem('program')));
     }
 };
