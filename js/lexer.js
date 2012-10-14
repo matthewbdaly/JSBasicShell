@@ -13,11 +13,13 @@ function Lexer() {
     this.tokens.add = new RegExp(/^\+/);
     this.tokens.subtract = new RegExp(/^\-/);
     this.tokens.multiply = new RegExp(/^\*/);
-    this.tokens.divide = new RegExp(/^\*/);
+    this.tokens.divide = new RegExp(/^\//);
     this.tokens.modulo = new RegExp(/^\%/);
     this.tokens.equal = new RegExp(/^\=/);
     this.tokens.leftbracket = new RegExp(/^\(/);
     this.tokens.rightbracket = new RegExp(/^\)/);
+    this.tokens.lt = new RegExp(/^</);
+    this.tokens.gt = new RegExp(/^>/);
 
     // Define tokens for other characters
     this.tokens.dollar = new RegExp(/^\$/);
@@ -30,9 +32,12 @@ function Lexer() {
     this.tokens.amp = new RegExp(/^\&/);
     this.tokens.pipe = new RegExp(/^\|/);
     this.tokens.tilde = new RegExp(/^\~/);
-    this.tokens.forwardslash = new RegExp(/^\//);
+    this.tokens.backslash = new RegExp(/^\\/);
     this.tokens.dot = new RegExp(/^\./);
     this.tokens.colon = new RegExp(/^\:/);
+
+    // Define tokens for undefined characters
+    this.tokens.unwanted = new RegExp(/^[\{\}\[\]\?\±\§]+/);
 }
 
 Lexer.prototype.identifyTokens = function (input) {
@@ -73,8 +78,12 @@ Lexer.prototype.getTokens = function (input) {
     // Parse the tokens
     while (input.length > 0) {
         result = this.identifyTokens(input);
-        newtoken = result.newtoken;
-        input = result.input;
+        if (result) {
+            newtoken = result.newtoken;
+            input = result.input;
+        } else {
+            newtoken = null;
+        }
         if (newtoken !== null) {
             tokens.push(newtoken);
         }
@@ -82,6 +91,7 @@ Lexer.prototype.getTokens = function (input) {
 
     // Send it to the parser
     parser = new Parser();
+    console.log(tokens);
     output = parser.processTokens(tokens);
     return output;
 };
