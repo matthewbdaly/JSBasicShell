@@ -16,7 +16,8 @@ describe("Test non-characters", function () {
     // Track enter being pressed
     it("tracks that the enter key was pressed", function () {
         // Spy on the captureKey method
-        spyOn(ShellSession.prototype, 'captureKey');
+        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'enter');
 
         // Create the event
         var e = $.Event('keyup');
@@ -25,5 +26,8 @@ describe("Test non-characters", function () {
 
         // Ensure captureKey has been called
         expect(ShellSession.prototype.captureKey).toHaveBeenCalled();
+
+        // Ensure enter has been called
+        expect(ShellSession.prototype.enter).toHaveBeenCalled();
     });
 });
