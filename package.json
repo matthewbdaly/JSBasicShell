@@ -10,7 +10,7 @@
     "test": "testem ci"
   },
   "author": "Matthew Daly",
-  "license": "GPLv2"
+  "license": "GPLv2",
   "repository" :
   {
       "type": "git",
