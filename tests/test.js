@@ -12,4 +12,18 @@ describe("Test non-characters", function () {
         // Ensure it has been called
         expect(shell.constructor).toHaveBeenCalled();
     });
+
+    // Track enter being pressed
+    it("tracks that the enter key was pressed", function () {
+        // Spy on the captureKey method
+        spyOn(ShellSession.prototype, 'captureKey');
+
+        // Create the event
+        var e = $.Event('keyup');
+        e.which = 13;
+        $(document).trigger(e);
+
+        // Ensure captureKey has been called
+        expect(ShellSession.prototype.captureKey).toHaveBeenCalled();
+    });
 });
