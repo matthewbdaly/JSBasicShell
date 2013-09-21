@@ -64,7 +64,7 @@ Parser.prototype.interpret = function (input) {
     'use strict';
 
     // First word should always be a keyword, so look up the appropriate one
-    var first = input[0].tokenvalue, output;
+    var first = input[0].tokenvalue.toLowerCase(), output;
     switch (first) {
     case 'print':
         output = this.print(input);
