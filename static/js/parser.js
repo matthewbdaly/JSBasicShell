@@ -89,7 +89,7 @@ Parser.prototype.print = function (input) {
     'use strict';
 
     // Declare variables
-    var countfrom, countto, printtext = "", quotetype, token;
+    var countfrom, countto, output, printtext = "", quotetype, token;
 
     // First token will always be print, so remove it
     input.splice(0,1);
@@ -97,6 +97,12 @@ Parser.prototype.print = function (input) {
     // Loop through the tokens
     for (token in input) {
         if (input.hasOwnProperty(token)) {
+
+            // If there is any content after the closing quote, throw a syntax error
+            if (countto > 0 && input[token].tokentype !== 'whitespace') {
+                output = this.throwSyntaxError();
+                return output;
+            }
 
             // Look for text in quotes
             if (input[token].tokentype !== 'singlequotes' && input[token].tokentype !== 'doublequotes' && typeof countfrom === "number" && typeof countto !== "number") {
