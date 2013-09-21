@@ -47,7 +47,7 @@ ShellSession.prototype.enter = function () {
     this.history.push(consoletext);
 
     // Pass any buffer contents to the lexer
-    if (consoletext.length > 0) {
+    if (consoletext.length > 1) {
         lexer = new Lexer();
         output = lexer.getTokens(consoletext);
     }
