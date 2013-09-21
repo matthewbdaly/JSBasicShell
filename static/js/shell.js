@@ -46,9 +46,11 @@ ShellSession.prototype.enter = function () {
     // Push the buffer contents to the history stack
     this.history.push(consoletext);
 
-    // Pass the buffer contents to the lexer
-    lexer = new Lexer();
-    output = lexer.getTokens(consoletext);
+    // Pass any buffer contents to the lexer
+    if (consoletext.length > 0) {
+        lexer = new Lexer();
+        output = lexer.getTokens(consoletext);
+    }
 
     // If any output, insert it before the new prompt
     if (output) {
