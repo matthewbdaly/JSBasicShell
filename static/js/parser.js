@@ -52,8 +52,11 @@ Parser.prototype.processTokens = function (input) {
     // If first token is a word, the shell is being used interactively
     if (tokens[0].tokentype === "word") {
         // Pass the tokens to the interpreter
-        this.interpret(tokens);
+        output = this.interpret(tokens);
     }
+
+    // Return any output
+    return output;
 };
 
 // Interpret a line of code
@@ -61,27 +64,29 @@ Parser.prototype.interpret = function (input) {
     'use strict';
 
     // First word should always be a keyword, so look up the appropriate one
-    var first = input[0].tokenvalue;
-    console.log(first);
+    var first = input[0].tokenvalue, output;
     switch (first) {
     case 'print':
-        this.print(input);
+        output = this.print(input);
         break;
     default:
-        this.throwSyntaxError(first);
+        output = this.throwSyntaxError(first);
     }
+
+    // Return the output
+    return output;
 }
 
 // Throw a syntax error
 Parser.prototype.throwSyntaxError = function (input) {
     'use strict';
 
-    alert('Syntax error');
+    return 'Syntax error';
 }
 
 // Print command
 Parser.prototype.print = function (input) {
     'use strict';
 
-    console.log(input);
+    return "Print";
 }
