@@ -4,13 +4,19 @@ describe("Test non-characters", function () {
     // Track the constructor
     it("tracks that the shell session was created", function () {
         // Spy on the prototype
-        spyOn(window, 'ShellSession');
+        spyOn(window, 'ShellSession').andCallThrough();
 
         // Initialise the object
         var shell = new ShellSession();
 
         // Ensure it has been called
         expect(shell.constructor).toHaveBeenCalled();
+
+        // Ensure it has the required attributes
+        expect(shell.loadmessage).toBe('JS Basic 1.0');
+        expect(shell.prompt).toBe('> ');
+        expect(shell.pointer).toBe(null);
+        expect(shell.history.length).toBe(0);
     });
 
     // Track enter being pressed
