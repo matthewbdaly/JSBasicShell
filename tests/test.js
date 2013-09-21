@@ -84,4 +84,22 @@ describe("Test non-characters", function () {
         // Ensure forwardHistory has been called
         expect(ShellSession.prototype.forwardHistory).toHaveBeenCalled();
     });
+
+    // Track other keys being pressed
+    it("tracks that the A key was pressed", function () {
+        // Spy on the captureChar and echoText methods
+        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'echoText');
+
+        // Create the event
+        var e = $.Event('keypress');
+        e.which = 65;
+        $(document).trigger(e);
+
+        // Ensure captureChar has been called
+        expect(ShellSession.prototype.captureChar).toHaveBeenCalled();
+
+        // Ensure echoText has been called
+        expect(ShellSession.prototype.echoText).toHaveBeenCalled();
+    });
 });
