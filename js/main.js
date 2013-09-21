@@ -2,7 +2,7 @@ $(document).ready(function () {
     'use strict';
 
     // Disable the default behaviour for the backspace, tab, up arrow and down arrow keys
-    $(document).keydown(function (e) {
+    $(document).on('keydown', function (e) {
         if (e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 38 || e.keyCode === 40) {
             return false;
         }
@@ -11,11 +11,11 @@ $(document).ready(function () {
     // Create a shell session object
     var shell = new ShellSession();
 
-    // Pass any keypresses to the shell
-    $(document).keypress(function (event) {
+    // Pass any keypress to the shell
+    $(document).on('keypress', function (event) {
         shell.captureChar(event);
     });
-    $(document).keyup(function (event) {
+    $(document).on('keyup', function (event) {
         shell.captureKey(event);
     });
 });
