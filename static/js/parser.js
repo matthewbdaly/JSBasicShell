@@ -88,5 +88,32 @@ Parser.prototype.throwSyntaxError = function (input) {
 Parser.prototype.print = function (input) {
     'use strict';
 
-    return "Print";
+    // Declare variables
+    var countfrom, countto, printtext = "", quotetype, token;
+
+    // First token will always be print, so remove it
+    input.splice(0,1);
+
+    // Loop through the tokens
+    for (token in input) {
+        if (input.hasOwnProperty(token)) {
+
+            // Look for text in quotes
+            if (input[token].tokentype !== 'singlequotes' && input[token].tokentype !== 'doublequotes' && typeof countfrom === "number" && typeof countto !== "number") {
+                printtext += input[token].tokenvalue;
+            }
+
+            // Look for the opening quote
+            if (input[token].tokentype === 'singlequotes' || input[token].tokentype === 'doublequotes') {
+                if (typeof countfrom === "number") {
+                    countto = parseInt(token, 10);
+                } else {
+                    countfrom = parseInt(token, 10);
+                }
+            }
+        }
+    }
+
+    // Return the value
+    return printtext;
 }
