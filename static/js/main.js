@@ -9,13 +9,13 @@ $(document).ready(function () {
     });
 
     // Create a shell session object
-    var shell = new ShellSession();
+    window.shell = new ShellSession();
 
     // Pass any keypress to the shell
     $(document).on('keypress', function (event) {
-        shell.captureChar(event);
+        window.shell.captureChar(event);
     });
     $(document).on('keyup', function (event) {
-        shell.captureKey(event);
+        window.shell.captureKey(event);
     });
 });
