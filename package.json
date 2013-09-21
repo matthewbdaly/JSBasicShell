@@ -11,4 +11,9 @@
   },
   "author": "Matthew Daly",
   "license": "GPLv2"
+  "repository" :
+  {
+      "type": "git",
+      "url": "git@github.com:matthewbdaly/JSBasicShell.git"
+  },
 }
