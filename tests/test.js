@@ -49,4 +49,39 @@ describe("Test non-characters", function () {
         expect(ShellSession.prototype.backspace).toHaveBeenCalled();
     });
 
+    // Track up arrow key being pressed
+    it("tracks that the up arrow key was pressed", function () {
+        // Spy on the captureKey and backHistory methods
+        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'backHistory');
+
+        // Create the event
+        var e = $.Event('keyup');
+        e.which = 38;
+        $(document).trigger(e);
+
+        // Ensure captureKey has been called
+        expect(ShellSession.prototype.captureKey).toHaveBeenCalled();
+
+        // Ensure backHistory has been called
+        expect(ShellSession.prototype.backHistory).toHaveBeenCalled();
+    });
+
+    // Track down arrow key being pressed
+    it("tracks that the down arrow key was pressed", function () {
+        // Spy on the captureKey and forwardHistory methods
+        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'forwardHistory');
+
+        // Create the event
+        var e = $.Event('keyup');
+        e.which = 40;
+        $(document).trigger(e);
+
+        // Ensure captureKey has been called
+        expect(ShellSession.prototype.captureKey).toHaveBeenCalled();
+
+        // Ensure forwardHistory has been called
+        expect(ShellSession.prototype.forwardHistory).toHaveBeenCalled();
+    });
 });
