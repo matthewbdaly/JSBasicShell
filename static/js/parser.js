@@ -1,7 +1,9 @@
+// Constructor
 function Parser() {
     'use strict';
 }
 
+// Process the tokens
 Parser.prototype.processTokens = function (input) {
     'use strict';
 
@@ -46,4 +48,40 @@ Parser.prototype.processTokens = function (input) {
         // Store it
         localStorage.setItem('program', JSON.stringify(this.program));
     }
+
+    // If first token is a word, the shell is being used interactively
+    if (tokens[0].tokentype === "word") {
+        // Pass the tokens to the interpreter
+        this.interpret(tokens);
+    }
 };
+
+// Interpret a line of code
+Parser.prototype.interpret = function (input) {
+    'use strict';
+
+    // First word should always be a keyword, so look up the appropriate one
+    var first = input[0].tokenvalue;
+    console.log(first);
+    switch (first) {
+    case 'print':
+        this.print(input);
+        break;
+    default:
+        this.throwSyntaxError(first);
+    }
+}
+
+// Throw a syntax error
+Parser.prototype.throwSyntaxError = function (input) {
+    'use strict';
+
+    alert('Syntax error');
+}
+
+// Print command
+Parser.prototype.print = function (input) {
+    'use strict';
+
+    console.log(input);
+}
