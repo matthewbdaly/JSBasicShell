@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+      "testem": "latest"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "test": "testem ci"
+  },
+  "author": "Matthew Daly",
+  "license": "GPLv2"
+}
