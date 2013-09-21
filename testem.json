@@ -1,0 +1,12 @@
+{
+  "framework": "jasmine",
+  "src_files": [
+    "static/bower_components/requirejs/require.js",
+    "static/bower_components/jquery/jquery.min.js",
+    "static/js/main.js",
+    "static/js/shell.js",
+    "static/js/lexer.js",
+    "static/js/parser.js",
+    "tests/tests.js"
+  ]
+}
