@@ -13,22 +13,8 @@ function ShellSession() {
     // Create a pointer for the history
     this.pointer = null;
 
-    // Display the load message
-    $('<p></p>', {
-        text: this.loadmessage,
-        'class': 'loadmessage'
-    }).appendTo('#content');
-
-    // Create the prompt
-    $('<span></span>', {
-        'class': 'prompt',
-        text: this.prompt
-    }).insertAfter('.loadmessage');
-
-    // Create the text area
-    $('<span></span>', {
-        'class': 'buffer'
-    }).insertAfter('.prompt');
+    // Render the content
+    this.renderContent();
 }
 
 ShellSession.prototype.enter = function () {
@@ -188,4 +174,35 @@ ShellSession.prototype.captureChar = function (event) {
 
     // Display the character
     this.echoText(keycode);
+}
+
+ShellSession.prototype.renderContent = function () {
+    'use strict';
+
+    // Display the load message
+    $('<p></p>', {
+        text: this.loadmessage,
+        'class': 'loadmessage'
+    }).appendTo('#content');
+
+    // Create the prompt
+    $('<span></span>', {
+        'class': 'prompt',
+        text: this.prompt
+    }).insertAfter('.loadmessage');
+
+    // Create the text area
+    $('<span></span>', {
+        'class': 'buffer'
+    }).insertAfter('.prompt');
+}
+
+ShellSession.prototype.clearScreen = function () {
+    'use strict';
+
+    // Empty the screen
+    $('div#content').empty();
+
+    // Render the content
+    this.renderContent();
 }
