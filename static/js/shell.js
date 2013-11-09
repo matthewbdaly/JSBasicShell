@@ -174,7 +174,7 @@ ShellSession.prototype.captureChar = function (event) {
 
     // Display the character
     this.echoText(keycode);
-}
+};
 
 ShellSession.prototype.renderContent = function () {
     'use strict';
@@ -195,7 +195,7 @@ ShellSession.prototype.renderContent = function () {
     $('<span></span>', {
         'class': 'buffer'
     }).insertAfter('.prompt');
-}
+};
 
 ShellSession.prototype.clearScreen = function () {
     'use strict';
