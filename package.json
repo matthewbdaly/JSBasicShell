@@ -1,19 +1,19 @@
 {
   "devDependencies": {
-      "testem": "latest"
+    "grunt": "~0.4.1",
+    "grunt-contrib-jasmine": "~0.5.2"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "testem ci"
+    "test": "grunt test --verbose"
   },
   "author": "Matthew Daly",
   "license": "GPLv2",
-  "repository" :
-  {
-      "type": "git",
-      "url": "git@github.com:matthewbdaly/JSBasicShell.git"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:matthewbdaly/JSBasicShell.git"
   }
 }
