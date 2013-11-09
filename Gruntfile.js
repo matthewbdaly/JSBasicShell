@@ -9,13 +9,13 @@ module.exports = function (grunt) {
                     'static/js/lexer.js',
                     'static/js/parser.js',
                     'static/js/main.js'
-                ]
-            },
-            options: {
-                vendor: [
-                    'static/bower_components/jquery/jquery.min.js'
                 ],
-                specs: 'tests/test.js'
+                options: {
+                    vendor: [
+                        'static/bower_components/jquery/jquery.min.js'
+                    ],
+                    specs: 'tests/test.js'
+                }
             }
         }
     });
