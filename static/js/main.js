@@ -10,6 +10,7 @@ $(document).ready(function () {
 
     // Create a shell session object
     window.shell = new ShellSession();
+    window.shell.renderContent();
 
     // Pass any keypress to the shell
     $(document).on('keypress', function (event) {

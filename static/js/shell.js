@@ -12,9 +12,6 @@ function ShellSession() {
 
     // Create a pointer for the history
     this.pointer = null;
-
-    // Render the content
-    this.renderContent();
 }
 
 ShellSession.prototype.enter = function () {
