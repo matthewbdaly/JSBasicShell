@@ -13,7 +13,6 @@ module.exports = function (grunt) {
             },
             options: {
                 vendor: [
-                    'static/bower_components/requirejs/require.js',
                     'static/bower_components/jquery/jquery.min.js'
                 ],
                 specs: 'tests/test.js'
