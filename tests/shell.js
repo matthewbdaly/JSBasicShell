@@ -108,4 +108,38 @@ describe("Test non-characters", function () {
         // Ensure echoText has been called
         expect(ShellSession.prototype.echoText).toHaveBeenCalled();
     });
+
+    it("tracks that the E key was pressed", function () {
+        // Spy on the captureChar and echoText methods
+        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'echoText');
+
+        // Create the event
+        var e = $.Event('keypress');
+        e.which = 69;
+        $(document).trigger(e);
+
+        // Ensure captureChar has been called
+        expect(ShellSession.prototype.captureChar).toHaveBeenCalled();
+
+        // Ensure echoText has been called
+        expect(ShellSession.prototype.echoText).toHaveBeenCalled();
+    });
+
+    it("tracks that the 7 key was pressed", function () {
+        // Spy on the captureChar and echoText methods
+        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'echoText');
+
+        // Create the event
+        var e = $.Event('keypress');
+        e.which = 55;
+        $(document).trigger(e);
+
+        // Ensure captureChar has been called
+        expect(ShellSession.prototype.captureChar).toHaveBeenCalled();
+
+        // Ensure echoText has been called
+        expect(ShellSession.prototype.echoText).toHaveBeenCalled();
+    });
 });
