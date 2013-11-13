@@ -13,7 +13,8 @@ module.exports = function (grunt) {
                 vendor: 'static/bower_components/jquery/jquery.min.js',
                 specs: [
                     'tests/shell.js',
-                    'tests/lexer.js'
+                    'tests/lexer.js',
+                    'tests/parser.js'
                 ]
             }
         }
