@@ -75,14 +75,14 @@ Parser.prototype.interpret = function (input) {
 
     // Return the output
     return output;
-}
+};
 
 // Throw a syntax error
 Parser.prototype.throwSyntaxError = function (input) {
     'use strict';
 
     return 'Syntax error';
-}
+};
 
 // Print command
 Parser.prototype.print = function (input) {
@@ -92,7 +92,7 @@ Parser.prototype.print = function (input) {
     var countfrom, countto, output, printtext = "", quotetype, token;
 
     // First token will always be print, so remove it
-    input.splice(0,1);
+    input.splice(0, 1);
 
     // Loop through the tokens
     for (token in input) {
@@ -122,4 +122,4 @@ Parser.prototype.print = function (input) {
 
     // Return the value
     return printtext;
-}
+};
