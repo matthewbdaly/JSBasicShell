@@ -78,7 +78,7 @@ ShellSession.prototype.backspace = function () {
     $('.buffer:last-of-type').text(consoletext);
 };
 
-ShellSession.prototype.backHistory = function (event) {
+ShellSession.prototype.backHistory = function () {
     'use strict';
 
     // Define the variables used
@@ -96,7 +96,7 @@ ShellSession.prototype.backHistory = function (event) {
     $(currentbuffer).text(this.history[this.pointer]);
 };
 
-ShellSession.prototype.forwardHistory = function (event) {
+ShellSession.prototype.forwardHistory = function () {
     'use strict';
 
     // Define the variables used
@@ -134,7 +134,7 @@ ShellSession.prototype.captureKey = function (event) {
     event.preventDefault();
 
     // Define the variables used
-    var keypressed, keycode;
+    var keycode;
 
     // Get the key code
     keycode = event.which;
@@ -164,7 +164,7 @@ ShellSession.prototype.captureChar = function (event) {
     event.preventDefault();
 
     // Define the variables use
-    var keypressed, keycode, s;
+    var keycode;
 
     // Get the key code
     keycode = event.which;
@@ -202,4 +202,4 @@ ShellSession.prototype.clearScreen = function () {
 
     // Render the content
     this.renderContent();
-}
+};

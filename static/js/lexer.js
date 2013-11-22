@@ -3,7 +3,7 @@ function Lexer() {
 
     // Store tokens as key-value pairs
     this.tokens = {};
-    
+
     // Define whitespace, number and word tokens
     this.tokens.whitespace = new RegExp(/^\s+/);
     this.tokens.number = new RegExp(/^\d+/);
@@ -44,7 +44,7 @@ Lexer.prototype.identifyTokens = function (input) {
     'use strict';
 
     // Define the variables
-    var key, match, pattern, test, tokens = {}, newtoken = {}, result = {};
+    var key, match, pattern, test, newtoken = {}, result = {};
 
     // Loop through the tokens and get the one that matches
     if (input.length > 0) {

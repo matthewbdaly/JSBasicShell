@@ -1,6 +1,8 @@
 // Constructor
 function Parser() {
     'use strict';
+
+    return true;
 }
 
 // Process the tokens
@@ -8,7 +10,7 @@ Parser.prototype.processTokens = function (input) {
     'use strict';
 
     // Define variables
-    var item, output, token, tokens = [], program = [], linenum, programline;
+    var item, output, token, tokens = [], linenum, programline;
 
     // Get the tokens
     for (item in input) {
@@ -78,7 +80,7 @@ Parser.prototype.interpret = function (input) {
 };
 
 // Throw a syntax error
-Parser.prototype.throwSyntaxError = function (input) {
+Parser.prototype.throwSyntaxError = function () {
     'use strict';
 
     return 'Syntax error';
@@ -89,7 +91,7 @@ Parser.prototype.print = function (input) {
     'use strict';
 
     // Declare variables
-    var countfrom, countto, output, printtext = "", quotetype, token;
+    var countfrom, countto, output, printtext = "", token;
 
     // First token will always be print, so remove it
     input.splice(0, 1);
