@@ -7,7 +7,7 @@ module.exports = function (grunt) {
                 'static/js/shell.js',
                 'static/js/lexer.js',
                 'static/js/parser.js',
-                'static/js/main.js'
+                'static/js/app.js'
             ],
             options: {
                 vendor: 'static/bower_components/jquery/jquery.min.js',
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         jslint: {
             client: {
                 src: [
-                    'static/js/main.js',
+                    'static/js/app.js',
                     'static/js/shell.js',
                     'static/js/lexer.js',
                     'static/js/parser.js'
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: [
-                    'static/js/main.js',
+                    'static/js/app.js',
                     'static/js/shell.js',
                     'static/js/lexer.js',
                     'static/js/parser.js'
