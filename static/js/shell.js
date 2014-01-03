@@ -154,6 +154,7 @@ ShellSession.prototype.captureKey = function (event) {
         this.forwardHistory();
         break;
     default:
+        break;
     }
 };
 
