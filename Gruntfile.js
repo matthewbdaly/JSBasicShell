@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                 'static/js/app.js'
             ],
             options: {
-                vendor: 'static/bower_components/jquery/jquery.min.js',
+                vendor: 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
                 specs: [
                     'tests/shell.js',
                     'tests/lexer.js',
