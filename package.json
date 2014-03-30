@@ -10,7 +10,7 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "grunt test --verbose"
+    "test": "istanbul cover grunt test --verbose"
   },
   "author": "Matthew Daly",
   "license": "GPLv2",
