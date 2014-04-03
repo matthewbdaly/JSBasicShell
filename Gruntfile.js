@@ -37,6 +37,9 @@ module.exports = function (grunt) {
                         'Parser',
                         'document'
                     ]
+                },
+                options: {
+                    junit: "jslint.xml"
                 }
             }
         },
