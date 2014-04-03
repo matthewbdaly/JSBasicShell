@@ -2,3 +2,4 @@ static/bower_components/*
 node_modules/
 coverage/
 jslint.xml
+checkstyle.xml

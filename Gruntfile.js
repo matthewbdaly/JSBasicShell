@@ -39,7 +39,8 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    junit: "jslint.xml"
+                    junit: "jslint.xml",
+                    checkstyle: "checkstyle.xml"
                 }
             }
         },
