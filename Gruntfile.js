@@ -32,13 +32,7 @@ module.exports = function (grunt) {
                                 dir: 'coverage'
                             }
                         }
-                    ],
-                    thresholds: {
-                        lines: 75,
-                        statements: 75,
-                        branches: 75,
-                        functions: 90
-                    }
+                    ]
                 },
                 junit: {
                     path: 'report',

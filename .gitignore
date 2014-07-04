@@ -5,3 +5,4 @@ jslint.xml
 checkstyle.xml
 _SpecRunner.html
 .grunt/
+report/
