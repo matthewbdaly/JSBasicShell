@@ -15,7 +15,35 @@ module.exports = function (grunt) {
                     'tests/shell.js',
                     'tests/lexer.js',
                     'tests/parser.js'
-                ]
+                ],
+                template: require('grunt-template-jasmine-istanbul'),
+                templateOptions: {
+                    coverage: 'coverage/coverage.json',
+                    report: [
+                        {
+                            type: 'cobertura',
+                            options: {
+                                dir: 'coverage'
+                            }
+                        },
+                        {
+                            type: 'html',
+                            options: {
+                                dir: 'coverage'
+                            }
+                        }
+                    ],
+                    thresholds: {
+                        lines: 75,
+                        statements: 75,
+                        branches: 75,
+                        functions: 90
+                    }
+                },
+                junit: {
+                    path: 'report',
+                    consolidate: true
+                }
             }
         },
         jslint: {
