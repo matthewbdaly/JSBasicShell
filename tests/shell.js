@@ -4,7 +4,7 @@ describe("Test non-characters", function () {
     // Track the constructor
     it("tracks that the shell session was created", function () {
         // Spy on the prototype
-        spyOn(window, 'ShellSession').andCallThrough();
+        spyOn(window, 'ShellSession').and.callThrough();
 
         // Initialise the object
         var shell = new ShellSession();
@@ -22,7 +22,7 @@ describe("Test non-characters", function () {
     // Track enter being pressed
     it("tracks that the enter key was pressed", function () {
         // Spy on the captureKey and enter methods
-        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureKey').and.callThrough();
         spyOn(ShellSession.prototype, 'enter');
 
         // Create the event
@@ -40,7 +40,7 @@ describe("Test non-characters", function () {
     // Track backspace being pressed
     it("tracks that the backspace key was pressed", function () {
         // Spy on the captureKey and backspace methods
-        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureKey').and.callThrough();
         spyOn(ShellSession.prototype, 'backspace');
 
         // Create the event
@@ -58,7 +58,7 @@ describe("Test non-characters", function () {
     // Track up arrow key being pressed
     it("tracks that the up arrow key was pressed", function () {
         // Spy on the captureKey and backHistory methods
-        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureKey').and.callThrough();
         spyOn(ShellSession.prototype, 'backHistory');
 
         // Create the event
@@ -76,7 +76,7 @@ describe("Test non-characters", function () {
     // Track down arrow key being pressed
     it("tracks that the down arrow key was pressed", function () {
         // Spy on the captureKey and forwardHistory methods
-        spyOn(ShellSession.prototype, 'captureKey').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureKey').and.callThrough();
         spyOn(ShellSession.prototype, 'forwardHistory');
 
         // Create the event
@@ -94,7 +94,7 @@ describe("Test non-characters", function () {
     // Track other keys being pressed
     it("tracks that the A key was pressed", function () {
         // Spy on the captureChar and echoText methods
-        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureChar').and.callThrough();
         spyOn(ShellSession.prototype, 'echoText');
 
         // Create the event
@@ -111,7 +111,7 @@ describe("Test non-characters", function () {
 
     it("tracks that the E key was pressed", function () {
         // Spy on the captureChar and echoText methods
-        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureChar').and.callThrough();
         spyOn(ShellSession.prototype, 'echoText');
 
         // Create the event
@@ -128,7 +128,7 @@ describe("Test non-characters", function () {
 
     it("tracks that the 7 key was pressed", function () {
         // Spy on the captureChar and echoText methods
-        spyOn(ShellSession.prototype, 'captureChar').andCallThrough();
+        spyOn(ShellSession.prototype, 'captureChar').and.callThrough();
         spyOn(ShellSession.prototype, 'echoText');
 
         // Create the event
