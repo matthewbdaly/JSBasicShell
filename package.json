@@ -4,14 +4,15 @@
     "grunt-contrib-jasmine": "^0.6.5",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-jslint": "~1.1.1",
-    "grunt-template-jasmine-istanbul": "^0.3.0"
+    "grunt-template-jasmine-istanbul": "^0.3.0",
+    "istanbul": "^0.3.2"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
   "scripts": {
-    "test": "istanbul cover grunt test --verbose"
+    "test": "grunt test --verbose"
   },
   "author": "Matthew Daly",
   "license": "GPLv2",
