@@ -86,15 +86,28 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             }
+        },
+        coveralls: {
+            options: {
+                src: 'coverage/lcov.info',
+                force: false
+            },
+            app: {
+                src: 'coverage/lcov.info'
+            }
         }
-
     });
 
     // Load tasks
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-coveralls');
     grunt.loadNpmTasks('grunt-jslint');
 
     // Register tasks
-    grunt.registerTask('test', ['jslint', 'jasmine']);
+    grunt.registerTask('test', [
+        'jslint',
+        'jasmine',
+        'coveralls'
+    ]);
 };
